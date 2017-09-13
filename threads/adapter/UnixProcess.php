@@ -31,7 +31,7 @@ class UnixProcess extends \Thread\Adapter\AdapterAbstract
         if (!$scriptPath || !file_exists($scriptPath)) {
             throw new \Exception('script path is invalid!');
         }
-        $args = str_replace('&', '\\&', http_build_query((array) $params));
+        $args = str_replace('&', ' ', http_build_query((array) $params));//修正
         return "{$process} {$scriptPath} {$args} &";
     }
 }
